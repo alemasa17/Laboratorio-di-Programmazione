@@ -17,8 +17,14 @@
 class Conto : public Subject{
 public:
     Conto(Utente utente) : u(utente), saldo(0){
-        file.open("Transazioni.txt", std::ios::in | std::ios::out | std::ios::trunc);
-        file.close();
+        // Prova ad aprire il file in lettura
+        file.open("Transazioni.txt", std::ios::in);
+
+        // Se non esiste, crealo in modalità scrittura
+        if (!file.is_open()) {
+            file.close();  // Chiudi il file se non esiste
+            file.open("Transazioni.txt", std::ios::out);  // Crea il file vuoto
+        }
     }
 
 
@@ -29,25 +35,24 @@ public:
         _observers.remove(delObserver);
     }
     void addTransazione(Transazione transazione){
-        fstream file;
+        file.open("Transazioni.txt", std::ios::app);
         transazioni.push_back(transazione);
         if (transazione.getInorOut() == "IN"){
             saldo += transazione.getImporto();
-            file << "Hai ricevuto "<<transazione.getImporto() << "€ da: " << transazione.getMittOrRicev() << " per " << transazione.getCausale() << endl;
+            file << "Movimento in Ingresso: "<< transazione.getImporto() << "€ | mittente: " << transazione.getMittOrRicev() << " | causale:" << transazione.getCausale() << endl;
             file << "Saldo attuale: " << saldo << endl<<endl;
         } else {
             saldo -= transazione.getImporto();
-            file << "Hai dato "<<transazione.getImporto() << "€ a " << transazione.getMittOrRicev() << " per " << transazione.getCausale() << endl;
+            file << "Movimento in Uscita: "<<transazione.getImporto() << "€ | ricevente: " << transazione.getMittOrRicev() << " | causale:" << transazione.getCausale() << endl;
             file << "Saldo attuale: " << saldo << endl<<endl;
         }
+        file.flush();
         notify();
-        file.close();
     }
 
     virtual void notify() override {
         for(list<Observer*>::iterator itr = _observers.begin(); itr != _observers.end(); ++itr) {
             (*itr)->update();
-            (*itr)->draw();
         }
     }
 
@@ -59,15 +64,21 @@ public:
     }
 
     void stampaTransazioni(){
-        ifstream file;
         string riga;
         while (std::getline(file, riga)) { // Legge riga per riga
             std::cout << riga << std::endl;
         }
-        file.close()
     }
 
-    const Transazione& lastTransazione() const{ return transazioni.back();}
+    string lastTransazione() const{
+        ifstream file("Transazioni.txt", std::ios::in);
+        file.seekg(0);
+        string riga, ultimaRiga;
+        while (getline(file, riga)) {
+            ultimaRiga = riga;
+        }
+        return ultimaRiga;
+    }
 
 
 private:

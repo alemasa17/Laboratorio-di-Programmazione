@@ -10,18 +10,19 @@ int main() {
     Utente u("Alessio", "Masala", "MSLSLS99A01H501A");
     Conto c(u);
     Notifica n(&c);
-    c.addObserver(&n);
 
-    Transazione t("27/02/2025", "Stipendio", 1000, true, 1000, "Azienda");
-    Transazione t1("27/02/2025", "Affitto", -500, false, 500, "Proprietario");
-    Transazione t2("27/02/2025", "Spesa", -100, false, 400, "Supermercato");
-    Transazione t3("27/02/2025", "Ricarica", 50, true, 450, "Amico");
-
+    Transazione t("01/03/2025", "Stipendio", 1000, "IN", "Datore di Lavoro");
+    Transazione t1("02/03/2025", "Spesa", 30, "OUT", "Coop");
+    Transazione t2("03/03/2025", "Volo", 500, "OUT", "Ryanair");
+    Transazione t3("04/03/2025", "Telefono", 500, "OUT", "Mediaworld");
 
     c.addTransazione(t);
     c.addTransazione(t1);
     c.addTransazione(t2);
     c.addTransazione(t3);
+
+    c.stampaTransazioni();
+
 
 
 

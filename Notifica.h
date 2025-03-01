@@ -20,10 +20,8 @@ public:
     }
     virtual void update() override {
         cout << "Nuova transazione effettuata!" << endl;
-        cout << "Data: " << conto->lastTransazione().getData() << " Causale: " << conto->lastTransazione().getCausale() << " Importo: " << conto->lastTransazione().getImporto() << " Mittente/Ricevente: " << conto->lastTransazione().getMittOrRicev() << endl << endl;
+        cout << conto->lastTransazione()<<endl;
     }
-
-    virtual void draw() override {}
 
 private:
     Conto* conto;
