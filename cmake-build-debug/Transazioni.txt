@@ -1,0 +1,12 @@
+Movimento in Ingresso: 1000€ | mittente: Datore di Lavoro| causale:Stipendio
+Saldo attuale: 1000
+
+Movimento in Uscita: 30€ | ricevente: Coop| causale:Spesa
+Saldo attuale: 970
+
+Movimento in Uscita: 500€ | ricevente: Ryanair| causale:Volo
+Saldo attuale: 470
+
+Movimento in Uscita: 500€ | ricevente: Mediaworld| causale:Telefono
+Saldo attuale: -30
+
