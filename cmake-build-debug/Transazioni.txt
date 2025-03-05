@@ -1,15 +1,24 @@
-Movimento in Ingresso: 1000€ | mittente: Datore di Lavoro | causale:Stipendio
+MSLSLS99A01H501A | Movimento in Ingresso: 1000€ | mittente: Datore di Lavoro | causale:Stipendio
 Saldo attuale: 1000
 
-Movimento in Uscita: 30€ | ricevente: Coop | causale:Spesa
+MSLSLS99A01H501A | Movimento in Uscita: 30€ | ricevente: Coop | causale:spesa
 Saldo attuale: 970
 
-Movimento in Uscita: 500€ | ricevente: Ryanair | causale:Volo
+MSLSLS99A01H501A | Movimento in Uscita: 500€ | ricevente: Ryanair | causale:Volo
 Saldo attuale: 470
 
-Movimento in Uscita: 500€ | ricevente: Mediaworld | causale:Telefono
+MSLSLS99A01H501A | Movimento in Uscita: 500€ | ricevente: Mediaworld | causale:Telefono
 Saldo attuale: -30
 
-Movimento in Ingresso: 1000€ | mittente: Datore di Lavoro | causale:Stipendio
+PLSCST02A21B036H | Movimento in Ingresso: 1000€ | mittente: Datore di Lavoro | causale:TFR
 Saldo attuale: 1000
+
+PLSCST02A21B036H | Movimento in Uscita: 450€ | ricevente: Meccanico | causale:Carburatore
+Saldo attuale: 550
+
+PLSCST02A21B036H | Movimento in Uscita: 250€ | ricevente: Meccanico | causale:Candele
+Saldo attuale: 300
+
+PLSCST02A21B036H | Movimento in Uscita: 30€ | ricevente: Meccanico | causale:Licquido di Raffreddamento
+Saldo attuale: 270
 

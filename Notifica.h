@@ -19,8 +19,8 @@ public:
         conto->removeObserver(this);
     }
     virtual void update() override {
-        cout << "Nuova transazione effettuata!" << endl;
-        cout << conto->lastTransazione()<<endl;
+        cout << "Nuova transazione effettuata sul conto di: ";
+        conto->proprietarioConto();
     }
 
 private:

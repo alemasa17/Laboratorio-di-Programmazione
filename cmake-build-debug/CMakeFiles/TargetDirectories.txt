@@ -1,0 +1,3 @@
+/Users/alessiomasala/Uni/Primo Anno/laboratorio di programmazione/elaborato Alessio Masala/cmake-build-debug/CMakeFiles/elaborato_Alessio_Masala.dir
+/Users/alessiomasala/Uni/Primo Anno/laboratorio di programmazione/elaborato Alessio Masala/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/alessiomasala/Uni/Primo Anno/laboratorio di programmazione/elaborato Alessio Masala/cmake-build-debug/CMakeFiles/rebuild_cache.dir

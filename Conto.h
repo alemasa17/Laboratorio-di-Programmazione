@@ -17,13 +17,18 @@
 class Conto : public Subject{
 public:
     Conto(Utente utente) : u(utente), saldo(0){
-        // Prova ad aprire il file in lettura
-        file.open("Transazioni.txt", std::ios::in);
-
-        // Se non esiste, crealo in modalità scrittura
-        if (!file.is_open()) {
-            file.close();  // Chiudi il file se non esiste
-            file.open("Transazioni.txt", std::ios::out);  // Crea il file vuoto
+        file.open("Transazioni.txt", std::ios::in | std::ios::out | std::ios::trunc);  // Modalità "trunc" per svuotare il file esistente
+        if (!file) {
+            std::cerr << "File non esistente, creazione di Transazioni.txt...\n";
+            file.close();  // Chiudi il file prima di provare a crearne uno nuovo
+            file.open("Transazioni.txt", std::ios::out);  // Modalità solo scrittura per crearlo
+        }
+        // Verifica se l'apertura è andata a buon fine
+        if (!file) {
+            std::cerr << "Errore nell'aprire o creare il file!" << std::endl;
+        } else {
+            // Se il file è stato aperto correttamente, chiudilo per ora
+            file.close();
         }
     }
 
@@ -39,14 +44,15 @@ public:
         transazioni.push_back(transazione);
         if (transazione.getInorOut() == "IN"){
             saldo += transazione.getImporto();
-            file << "Movimento in Ingresso: "<< transazione.getImporto() << "€ | mittente: " << transazione.getMittOrRicev() << " | causale:" << transazione.getCausale() << endl;
+            file <<u.getCf()<< " | Movimento in Ingresso: "<< transazione.getImporto() << "€ | mittente: " << transazione.getMittOrRicev() << " | causale:" << transazione.getCausale() << endl;
             file << "Saldo attuale: " << saldo << endl<<endl;
         } else {
             saldo -= transazione.getImporto();
-            file << "Movimento in Uscita: "<<transazione.getImporto() << "€ | ricevente: " << transazione.getMittOrRicev() << " | causale:" << transazione.getCausale() << endl;
+            file <<u.getCf()<< " | Movimento in Uscita: "<<transazione.getImporto() << "€ | ricevente: " << transazione.getMittOrRicev() << " | causale:" << transazione.getCausale() << endl;
             file << "Saldo attuale: " << saldo << endl<<endl;
         }
         file.flush();
+        file.close();
         notify();
     }
 
@@ -64,20 +70,52 @@ public:
     }
 
     void stampaTransazioni(){
+        /*
+        ifstream file("Transazioni.txt", std::ios::in);
         string riga;
+
+        cout<<endl<<"-------Transazioni conto di "<<u.getNome() << " "<< u.getCognome()<< "-------"<<endl;
         while (std::getline(file, riga)) { // Legge riga per riga
-            std::cout << riga << std::endl;
+            std::cout << riga<<endl;
         }
+        cout<<endl<<endl;
+         */
+        ifstream file("Transazioni.txt", std::ios::in);
+        string riga;
+        string cf_utente = u.getCf(); // Codice fiscale dell'utente attuale
+
+        cout << endl << "------- Transazioni conto di " << u.getNome() << " " << u.getCognome() << " -------" << endl;
+
+        while (getline(file, riga)) {
+            if (riga.find(cf_utente) != string::npos) { // Controlla se la riga contiene il CF dell'utente
+                cout << riga << endl;
+            }
+        }
+
+        cout << endl << endl;
+        file.close();
     }
 
-    string lastTransazione() const{
-        ifstream file("Transazioni.txt", std::ios::in);
-        file.seekg(0);
+    /*
+    string lastTransazione() const {
+        ifstream file("Transazioni.txt", std::ios::in);  // Apre il file in modalità lettura
+        if (!file) {  // Verifica se il file è stato aperto correttamente
+            cerr << "Errore nell'aprire il file per la lettura!" << endl;
+            return "";  // Ritorna una stringa vuota se il file non è stato aperto
+        }
+        cout << "Ho aperto il file e ora cerco l'ultima transazione" << endl;
         string riga, ultimaRiga;
         while (getline(file, riga)) {
-            ultimaRiga = riga;
+            ultimaRiga = riga;  // Memorizza ogni riga, alla fine avrai l'ultima
         }
-        return ultimaRiga;
+        cout << "L'ultima transazione è: " << ultimaRiga << endl;
+        file.close();  // Chiudi il file
+        return ultimaRiga;  // Ritorna l'ultima riga letta
+    }
+     */
+
+    void proprietarioConto() const {
+        cout << u.getNome() << " " << u.getCognome()<<endl;
     }
 
 
