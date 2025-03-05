@@ -16,7 +16,7 @@
 
 class Conto : public Subject{
 public:
-    Conto(Utente utente) : u(utente), saldo(0){
+    Conto(Utente utente) : u(utente), saldo(0.0){
         file.open("Transazioni.txt", std::ios::in | std::ios::out | std::ios::trunc);  // Modalità "trunc" per svuotare il file esistente
         if (!file) {
             std::cerr << "File non esistente, creazione di Transazioni.txt...\n";
@@ -62,9 +62,10 @@ public:
         }
     }
 
-    void getSaldo(){
-        cout << "Saldo attuale: " << saldo << endl;
+    double getSaldo() const {
+        return saldo;
     }
+
     void setSaldo(double saldo) {
         Conto::saldo = saldo;
     }
