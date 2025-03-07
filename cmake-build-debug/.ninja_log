@@ -6,3 +6,11 @@
 0	993	1741188408312843064	_deps/googletest-build/googletest/CMakeFiles/gtest_main.dir/src/gtest_main.cc.o	2688e0cdc920b8ed
 3	48	1741188417938056000	lib/libgtest.a	cbb41787cf97926c
 48	66	1741188417956156000	lib/libgtest_main.a	4e8461fcc2b017d6
+6	1015	1741363725872209974	CMakeFiles/test_elaborato.dir/test/test-elaborato.cpp.o	612e0d5e8cb9833f
+7	1069	1741363725927476058	_deps/googletest-build/googlemock/CMakeFiles/gmock.dir/src/gmock-all.cc.o	321455bbd14b14f3
+1069	1101	1741363725964758000	lib/libgmock.a	3711acbfc21141f2
+1101	1178	1741363726041547209	test_elaborato	b964af9f4486382a
+6	619	1741364019912000213	CMakeFiles/elaborato_Alessio_Masala.dir/main.cpp.o	488fe0da57977b1a
+619	671	1741364019967603579	elaborato_Alessio_Masala	5eeb343980235e22
+5	878	1741366409142673485	CMakeFiles/test_elaborato.dir/test/test-elaborato.cpp.o	612e0d5e8cb9833f
+878	953	1741366409220475757	test_elaborato	b964af9f4486382a

@@ -9,7 +9,8 @@
 #include "../Conto.h"
 #include "../Notifica.h"
 
-// Test per la classe Utente
+// Te
+// st per la classe Utente
 TEST(UtenteTest, Costruttore) {
 Utente utente("Alessio", "Masala", "CF12345");
 

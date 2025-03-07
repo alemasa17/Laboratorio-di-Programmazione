@@ -1,0 +1,19 @@
+Start testing: Mar 07 18:03 CET
+----------------------------------------------------------
+Unable to find executable: /Users/alessiomasala/Uni/Primo Anno/laboratorio di programmazione/elaborato Alessio Masala/build/test_elaborato
+1/1 Testing: TestElaborato
+1/1 Test: TestElaborato
+Command: ""
+Directory: /Users/alessiomasala/Uni/Primo Anno/laboratorio di programmazione/elaborato Alessio Masala/build
+"TestElaborato" start time: 
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"TestElaborato" end time: Mar 07 18:03 CET
+"TestElaborato" time elapsed: 00:00:00
+----------------------------------------------------------
+
+End testing: Mar 07 18:03 CET
