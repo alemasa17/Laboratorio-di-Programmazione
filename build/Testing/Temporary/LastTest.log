@@ -1,19 +1,71 @@
-Start testing: Mar 07 18:03 CET
+Start testing: Mar 07 18:29 CET
 ----------------------------------------------------------
-Unable to find executable: /Users/alessiomasala/Uni/Primo Anno/laboratorio di programmazione/elaborato Alessio Masala/build/test_elaborato
 1/1 Testing: TestElaborato
 1/1 Test: TestElaborato
-Command: ""
+Command: "/Users/alessiomasala/Uni/Primo Anno/laboratorio di programmazione/elaborato Alessio Masala/build/test_elaborato"
 Directory: /Users/alessiomasala/Uni/Primo Anno/laboratorio di programmazione/elaborato Alessio Masala/build
-"TestElaborato" start time: 
+"TestElaborato" start time: Mar 07 18:29 CET
 Output:
 ----------------------------------------------------------
+Running main() from /Users/alessiomasala/Uni/Primo Anno/laboratorio di programmazione/elaborato Alessio Masala/build/_deps/googletest-src/googletest/src/gtest_main.cc
+[==========] Running 8 tests from 4 test suites.
+[----------] Global test environment set-up.
+[----------] 2 tests from UtenteTest
+[ RUN      ] UtenteTest.Costruttore
+[       OK ] UtenteTest.Costruttore (0 ms)
+[ RUN      ] UtenteTest.Setters
+[       OK ] UtenteTest.Setters (0 ms)
+[----------] 2 tests from UtenteTest (0 ms total)
+
+[----------] 1 test from TransazioneTest
+[ RUN      ] TransazioneTest.Costruttore
+[       OK ] TransazioneTest.Costruttore (0 ms)
+[----------] 1 test from TransazioneTest (0 ms total)
+
+[----------] 4 tests from ContoTest
+[ RUN      ] ContoTest.Costruttore
+[       OK ] ContoTest.Costruttore (0 ms)
+[ RUN      ] ContoTest.AggiungiTransazioneIn
+/Users/alessiomasala/Uni/Primo Anno/laboratorio di programmazione/elaborato Alessio Masala/test/test-elaborato.cpp:60: Failure
+Expected equality of these values:
+  conto.getSaldo()
+    Which is: -100
+  100.0
+    Which is: 100
+
+[  FAILED  ] ContoTest.AggiungiTransazioneIn (0 ms)
+[ RUN      ] ContoTest.AggiungiTransazioneOut
+/Users/alessiomasala/Uni/Primo Anno/laboratorio di programmazione/elaborato Alessio Masala/test/test-elaborato.cpp:73: Failure
+Expected equality of these values:
+  conto.getSaldo()
+    Which is: -150
+  50.0
+    Which is: 50
+
+[  FAILED  ] ContoTest.AggiungiTransazioneOut (0 ms)
+[ RUN      ] ContoTest.StampaTransazioni
+[       OK ] ContoTest.StampaTransazioni (0 ms)
+[----------] 4 tests from ContoTest (0 ms total)
+
+[----------] 1 test from NotificaTest
+[ RUN      ] NotificaTest.RiceviNotifica
+[       OK ] NotificaTest.RiceviNotifica (0 ms)
+[----------] 1 test from NotificaTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 8 tests from 4 test suites ran. (0 ms total)
+[  PASSED  ] 6 tests.
+[  FAILED  ] 2 tests, listed below:
+[  FAILED  ] ContoTest.AggiungiTransazioneIn
+[  FAILED  ] ContoTest.AggiungiTransazioneOut
+
+ 2 FAILED TESTS
 <end of output>
-Test time =   0.00 sec
+Test time =   0.01 sec
 ----------------------------------------------------------
-Test Passed.
-"TestElaborato" end time: Mar 07 18:03 CET
+Test Failed.
+"TestElaborato" end time: Mar 07 18:29 CET
 "TestElaborato" time elapsed: 00:00:00
 ----------------------------------------------------------
 
-End testing: Mar 07 18:03 CET
+End testing: Mar 07 18:29 CET

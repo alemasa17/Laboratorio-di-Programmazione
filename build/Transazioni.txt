@@ -1,0 +1,3 @@
+CF12345 | Movimento in Uscita: 100€ | ricevente: Mittente | causale:Deposito
+Saldo attuale: -100
+

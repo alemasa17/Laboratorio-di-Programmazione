@@ -17,7 +17,7 @@
 class Conto : public Subject{
 public:
     Conto(Utente utente) : u(utente), saldo(0.0){
-        file.open("Transazioni.txt", std::ios::in | std::ios::out | std::ios::trunc);  // Modalità "trunc" per svuotare il file esistente
+        file.open("Transazioni.txt", std::ios::trunc  | std::ios::out | std::ios::in);  // Modalità "trunc" per svuotare il file esistente
         if (!file) {
             std::cerr << "File non esistente, creazione di Transazioni.txt...\n";
             file.close();  // Chiudi il file prima di provare a crearne uno nuovo
@@ -46,11 +46,12 @@ public:
             saldo += transazione.getImporto();
             file <<u.getCf()<< " | Movimento in Ingresso: "<< transazione.getImporto() << "€ | mittente: " << transazione.getMittOrRicev() << " | causale:" << transazione.getCausale() << endl;
             file << "Saldo attuale: " << saldo << endl<<endl;
-        } else {
+        } else if (transazione.getInorOut() == "OUT") {
             saldo -= transazione.getImporto();
             file <<u.getCf()<< " | Movimento in Uscita: "<<transazione.getImporto() << "€ | ricevente: " << transazione.getMittOrRicev() << " | causale:" << transazione.getCausale() << endl;
             file << "Saldo attuale: " << saldo << endl<<endl;
         }
+        else cout<<"Transazione non valida"<<endl;
         file.flush();
         file.close();
         notify();
@@ -92,8 +93,7 @@ public:
                 cout << riga << endl;
             }
         }
-
-        cout << endl << endl;
+        cout<< "----- Saldo attuale: " << saldo << "€ -----"<<endl<<endl;
         file.close();
     }
 

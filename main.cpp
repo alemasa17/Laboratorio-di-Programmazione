@@ -17,7 +17,7 @@ int main() {
     Notifica n1(&c1);
 
     Transazione t("01/03/2025", "Stipendio", 1000, "IN", "Datore di Lavoro");
-    Transazione t1("02/03/2025", "spesa", 30, "OUT", "Coop");
+    Transazione t1("02/03/2025", "spesa", 12350, "OUT", "Coop");
     Transazione t2("03/03/2025", "Volo", 500, "OUT", "Ryanair");
     Transazione t3("04/03/2025", "Telefono", 500, "OUT", "Mediaworld");
 

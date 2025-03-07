@@ -19,7 +19,7 @@ FetchContent_MakeAvailable(googletest)
 add_executable(elaborato_Alessio_Masala main.cpp Conto.h Transazione.h header.h Notifica.h Observer.h Subject.h Utente.h)
 
 # Aggiungi l'eseguibile per i test
-add_executable(test test-elaborato.cpp)
+add_executable(test_elaborato test/test-elaborato.cpp Conto.h Transazione.h Notifica.h Utente.h)
 
 # Collega GoogleTest e GoogleMock al tuo eseguibile di test
 target_link_libraries(test_elaborato gtest gmock gtest_main)
