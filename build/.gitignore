@@ -1,0 +1,28 @@
+# Cartelle di build ed eseguibili
+build/
+bin/
+out/
+*.o
+*.exe
+*.out
+*.a
+*.so
+*.dll
+
+# File di log e di debug
+*.log
+*.tmp
+*.swp
+
+# File di configurazione IDE/editor
+.vscode/
+.idea/
+*.iml
+*.DS_Store
+
+# File generati da Google Test o CMake
+googletest/
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+Makefile
