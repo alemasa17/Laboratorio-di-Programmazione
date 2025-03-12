@@ -1,44 +1,10 @@
-# Cartelle di build ed eseguibili
-build/
-bin/
-out/
-*.o
-*.exe
-*.out
-*.a
-*.so
-*.dll
-
-# File di log e di debug
-*.log
-*.tmp
-*.swp
-
-# File di configurazione IDE/editor
-.vscode/
-.idea/
-*.iml
-*.DS_Store
-
-# File generati da Google Test o CMake
-googletest/
-CMakeCache.txt
-CMakeFiles/
-cmake_install.cmake
-Makefile
-
-# File di sistema macOS
-.DS_Store
-
 # Cartelle di build di CMake
 cmake-build-debug/
 build/
+idea/
 CMakeCache.txt
 CMakeFiles/
 cmake_install.cmake
 Makefile
 
-# Evita file di Google Test
-_deps/
-googletest/
 

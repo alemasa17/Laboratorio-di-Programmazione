@@ -1,0 +1,18 @@
+# ninja log v5
+878	953	1741366409220475757	test_elaborato	b964af9f4486382a
+48	66	1741188417956156000	lib/libgtest_main.a	4e8461fcc2b017d6
+3	48	1741188417938056000	lib/libgtest.a	cbb41787cf97926c
+7	1069	1741363725927476058	_deps/googletest-build/googlemock/CMakeFiles/gmock.dir/src/gmock-all.cc.o	321455bbd14b14f3
+5	878	1741366409142673485	CMakeFiles/test_elaborato.dir/test/test-elaborato.cpp.o	612e0d5e8cb9833f
+0	993	1741188408312843064	_deps/googletest-build/googletest/CMakeFiles/gtest_main.dir/src/gtest_main.cc.o	2688e0cdc920b8ed
+9	561	1741368130399479202	CMakeFiles/elaborato_Alessio_Masala.dir/main.cpp.o	488fe0da57977b1a
+0	2113	1741188409431423537	_deps/googletest-build/googletest/CMakeFiles/gtest.dir/src/gtest-all.cc.o	3d908e219fb91fe
+0	898	1741368355477148916	build.ninja	f1c5bedb547a74c2
+1069	1101	1741363725964758000	lib/libgmock.a	3711acbfc21141f2
+561	613	1741368130454615499	elaborato_Alessio_Masala	5eeb343980235e22
+7	1118	1741368404118371272	CMakeFiles/test_elaborato.dir/test/test-elaborato.cpp.o	612e0d5e8cb9833f
+1118	1191	1741368404195318527	test_elaborato	b964af9f4486382a
+4	983	1741788329817785893	CMakeFiles/test_elaborato.dir/test/test-elaborato.cpp.o	612e0d5e8cb9833f
+983	1055	1741788329894683435	test_elaborato	b964af9f4486382a
+7	608	1741789533876276866	CMakeFiles/elaborato_Alessio_Masala.dir/main.cpp.o	488fe0da57977b1a
+608	665	1741789533936764986	elaborato_Alessio_Masala	5eeb343980235e22
