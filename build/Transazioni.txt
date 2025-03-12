@@ -1,3 +1,0 @@
-CF12345 | Movimento in Ingresso: 100€ | mittente: Mittente | causale:Deposito
-Saldo attuale: 100
-
