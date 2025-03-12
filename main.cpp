@@ -16,15 +16,15 @@ int main() {
     Notifica n(&c);
     Notifica n1(&c1);
 
-    Transazione t("01/03/2025", "Stipendio", 1000, "IN", "Datore di Lavoro");
-    Transazione t1("02/03/2025", "spesa", 12350, "OUT", "Coop");
-    Transazione t2("03/03/2025", "Volo", 500, "OUT", "Ryanair");
-    Transazione t3("04/03/2025", "Telefono", 500, "OUT", "Mediaworld");
+    Transazione t("01/03/2025", "Stipendio", 1000, true, "Datore di Lavoro");
+    Transazione t1("02/03/2025", "spesa", 12350, false, "Coop");
+    Transazione t2("03/03/2025", "Volo", 500, false, "Ryanair");
+    Transazione t3("04/03/2025", "Telefono", 500, false, "Mediaworld");
 
-    Transazione tr("05/03/2025", "TFR", 1000, "IN", "Datore di Lavoro");
-    Transazione tr1("06/03/2025", "Carburatore", 450, "OUT", "Meccanico");
-    Transazione tr2("07/03/2025", "Candele", 250, "OUT", "Meccanico");
-    Transazione tr3("08/03/2025", "Licquido di Raffreddamento", 30, "OUT", "Meccanico");
+    Transazione tr("05/03/2025", "TFR", 1000, true, "Datore di Lavoro");
+    Transazione tr1("06/03/2025", "Carburatore", 450, false, "Meccanico");
+    Transazione tr2("07/03/2025", "Candele", 250, false, "Meccanico");
+    Transazione tr3("08/03/2025", "Licquido di Raffreddamento", 30, false, "Meccanico");
 
     c.addTransazione(t);
     c.addTransazione(t1);

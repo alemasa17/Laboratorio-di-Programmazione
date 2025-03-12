@@ -42,16 +42,15 @@ public:
     void addTransazione(Transazione transazione){
         file.open("Transazioni.txt", std::ios::app);
         transazioni.push_back(transazione);
-        if (transazione.getInorOut() == "IN"){
-            saldo += transazione.getImporto();
+        if (transazione.getInorOut()){
+            saldo = saldo + transazione.getImporto();
             file <<u.getCf()<< " | Movimento in Ingresso: "<< transazione.getImporto() << "€ | mittente: " << transazione.getMittOrRicev() << " | causale:" << transazione.getCausale() << endl;
             file << "Saldo attuale: " << saldo << endl<<endl;
-        } else if (transazione.getInorOut() == "OUT") {
-            saldo -= transazione.getImporto();
+        } else{
+            saldo = saldo - transazione.getImporto();
             file <<u.getCf()<< " | Movimento in Uscita: "<<transazione.getImporto() << "€ | ricevente: " << transazione.getMittOrRicev() << " | causale:" << transazione.getCausale() << endl;
             file << "Saldo attuale: " << saldo << endl<<endl;
         }
-        else cout<<"Transazione non valida"<<endl;
         file.flush();
         file.close();
         notify();

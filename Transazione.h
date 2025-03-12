@@ -9,7 +9,7 @@
 
 class Transazione {
 public:
-    Transazione(string data, string causale, double importo, string inOrOut, string mittOrRicev) : data(data), causale(causale), importo(importo), inOrOut(inOrOut), mittOrRicev(mittOrRicev) {
+    Transazione(string data, string causale, double importo, bool inOrOut, string mittOrRicev) : data(data), causale(causale), importo(importo), inOrOut(inOrOut), mittOrRicev(mittOrRicev) {
 
     }
 
@@ -37,7 +37,7 @@ public:
         return importo;
     }
 
-    const string &getInorOut() const {
+    const bool &getInorOut() const {
         return inOrOut;
     }
 
@@ -48,7 +48,7 @@ private:
     string causale;
     string mittOrRicev;
     double importo;
-    string inOrOut;
+    bool inOrOut;
 };
 
 
