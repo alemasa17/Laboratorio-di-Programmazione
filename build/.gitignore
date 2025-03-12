@@ -27,8 +27,10 @@ CMakeFiles/
 cmake_install.cmake
 Makefile
 
+# File di sistema macOS
+.DS_Store
 
-# Evita cartelle di build di CMake
+# Cartelle di build di CMake
 cmake-build-debug/
 build/
 CMakeCache.txt
@@ -39,3 +41,4 @@ Makefile
 # Evita file di Google Test
 _deps/
 googletest/
+
