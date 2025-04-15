@@ -1,0 +1,10 @@
+# Cartelle di build di CMake
+cmake-build-debug/
+build/
+idea/
+build/CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+Makefile
+
+
