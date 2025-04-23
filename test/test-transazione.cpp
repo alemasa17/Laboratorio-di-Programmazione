@@ -1,20 +1,32 @@
 #include <gtest/gtest.h>
-#include <gmock/gmock.h>  // Includi Google Mock
-#include "../Utente.h"
 #include "../Transazione.h"
-#include "../Conto.h"
-#include "../Notifica.h"
 
-
-TEST(TransazioneTest, Costruttore) {
-    Transazione trans("2025-03-01", "Pagamento", 100.0, true, "Mittente");
-
-    EXPECT_EQ(trans.getData(), "2025-03-01");
-    EXPECT_EQ(trans.getCausale(), "Pagamento");
-    EXPECT_EQ(trans.getImporto(), 100.0);
-    EXPECT_TRUE(trans.getInorOut()); // Ora booleano
-    EXPECT_EQ(trans.getMittOrRicev(), "Mittente");
+TEST(TransazioneTest, CostruttoreValidoNonLanciaEccezioni) {
+    Data d(1, 1, 2024);
+    EXPECT_NO_THROW(Transazione t(d, "Affitto", 500.0, true));
 }
 
+TEST(TransazioneTest, CostruttoreConImportoNegativoLanciaEccezione) {
+    Data d(1, 1, 2024);
+    EXPECT_THROW(Transazione t(d, "Errore", -50.0, false), invalid_argument);
+}
 
+TEST(TransazioneTest, GettersRestituisconoValoriCorretti) {
+    Data d(10, 5, 2023);
+    Transazione t(d, "Stipendio", 1500.0, true);
 
+    EXPECT_EQ(t.getData(), "10/5/2023");
+    EXPECT_EQ(t.getCausale(), "Stipendio");
+    EXPECT_DOUBLE_EQ(t.getImporto(), 1500.0);
+    EXPECT_TRUE(t.getInorOut());
+}
+
+TEST(TransazioneTest, CambiandoLaDataNonCambiaLOriginale) {
+    Data d1(1, 1, 2024);
+    Transazione t(d1, "Acquisto", 100.0, false);
+    Data d2(2, 2, 2024);
+
+    t.setData(d2);
+
+    EXPECT_EQ(t.getData(), "2/2/2024");
+}

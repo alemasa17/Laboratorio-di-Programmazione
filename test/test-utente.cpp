@@ -3,29 +3,30 @@
 //
 
 #include <gtest/gtest.h>
-#include <gmock/gmock.h>  // Includi Google Mock
 #include "../Utente.h"
-#include "../Transazione.h"
-#include "../Conto.h"
-#include "../Notifica.h"
 
-
-TEST(UtenteTest, Costruttore) {
-    Utente utente("Alessio", "Masala", "CF12345");
-
-    EXPECT_EQ(utente.getNome(), "Alessio");
-    EXPECT_EQ(utente.getCognome(), "Masala");
-    EXPECT_EQ(utente.getCf(), "CF12345");
+TEST(UtenteTest, CostruttoreInizializzaCorrettamente) {
+    Utente u("Mario", "Rossi", "RSSMRA99A01H501X");
+    EXPECT_EQ(u.getNome(), "Mario");
+    EXPECT_EQ(u.getCognome(), "Rossi");
+    EXPECT_EQ(u.getCf(), "RSSMRA99A01H501X");
 }
 
-TEST(UtenteTest, Setters) {
-    Utente utente("Alessio", "Masala", "CF12345");
+TEST(UtenteTest, SetNomeAggiornaNome) {
+    Utente u("Mario", "Rossi", "RSSMRA99A01H501X");
+    u.setNome("Luca");
+    EXPECT_EQ(u.getNome(), "Luca");
+}
 
-    utente.setNome("Marco");
-    utente.setCognome("Rossi");
-    utente.setCf("CF54321");
+TEST(UtenteTest, DisplayRestituisceStringaCorretta) {
+    Utente u("Anna", "Verdi", "VRDANN99B41F205X");
+    string expected = "Nome: Anna Cognome: Verdi Codice Fiscale: VRDANN99B41F205X";
+    EXPECT_EQ(u.display(), expected);
+}
 
-    EXPECT_EQ(utente.getNome(), "Marco");
-    EXPECT_EQ(utente.getCognome(), "Rossi");
-    EXPECT_EQ(utente.getCf(), "CF54321");
+TEST(UtenteTest, OperatoreStreamOutput) {
+    Utente u("Elisa", "Bianchi", "BNCLSE01H50A662Y");
+    stringstream ss;
+    ss << u;
+    EXPECT_EQ(ss.str(), "Elisa Bianchi");
 }

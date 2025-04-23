@@ -35,13 +35,13 @@ public:
         }
     }
 
-
     virtual void addObserver(Observer* newObserver) override {
         _observers.push_back(newObserver);
     }
     virtual void removeObserver(Observer* delObserver) override {
         _observers.remove(delObserver);
     }
+
     void addTransazione(Transazione transazione){
         ofstream file("Transazioni.txt", ios::app);
         transazioni.push_back(transazione);
@@ -80,7 +80,9 @@ public:
         ifstream file("Transazioni.txt");
         string riga, ultimaRiga;
 
-        cout << "------- Nuova Transazione sul conto di " << u.getNome() << " " << u.getCognome() << " -------" << endl;
+        cout << "------- Nuova Transazione sul conto di " ;
+        proprietarioConto();
+        cout << " -------" << endl;
         while (std::getline(file, riga)) {
             ultimaRiga = riga; // Aggiorna l'ultima riga letta
         }
@@ -90,27 +92,9 @@ public:
         cout<< "----- Saldo attuale: " << saldo << "€ -----"<<endl<<endl;
     }
 
-    /*
-    void stampaTransazioni(){
-        ifstream file("Transazioni.txt", std::ios::in);
-        string riga;
-        string cf_utente = u.getCf(); // Codice fiscale dell'utente attuale
 
-        cout << endl << "------- Transazioni conto di ";
-        proprietarioConto();
-        cout<< endl;
 
-        while (getline(file, riga)) {
-            if (riga.find(cf_utente) != string::npos) { // Controlla se la riga contiene il CF dell'utente
-                cout << riga << endl;
-            }
-        }
-        cout<< "----- Saldo attuale: " << saldo << "€ -----"<<endl<<endl;
-        file.close();
-    }
-     */
-
-    void cercaTransData(const string& data) {
+    void cercaTransData(const string &data) {
         ifstream file("Transazioni.txt", std::ios::in);
         string riga;
         string cf_utente = u.getCf(); // Codice fiscale dell'utente attuale
@@ -128,6 +112,56 @@ public:
         file.close();
     }
 
+    void eliminaTrans(const string &data, string causale, string importo){
+        std::ifstream file("Transazioni.txt");
+        std::ofstream fileTemp("Transazioni_temp.txt");
+        string riga, rigaDaEliminare;
+        string cf_utente = u.getCf(); // Codice fiscale dell'utente attuale
+
+
+        cout << endl << endl << "------- Elimino Transazione conto di ";
+        proprietarioConto();
+        cout <<" in data: " << data << ", di importo: " << importo << ", con causale: "<< causale << " -------" << endl;
+
+        while (getline(file, riga)) {
+            if (riga.find(cf_utente) != string::npos && riga.find(data) != string::npos && riga.find(causale) != string::npos && riga.find(importo) != string::npos){
+                rigaDaEliminare = riga;
+                cout << "Trovata transazione da eliminare: " << rigaDaEliminare << endl;
+            }
+        }
+
+        file.clear();        // Pulisce eventuali errori nel flusso
+        file.seekg(0, ios::beg); // Torna all'inizio del file
+
+        while (getline(file, riga)) {
+            if (riga != rigaDaEliminare) { // Scrive solo le righe che non sono da eliminare
+                fileTemp << riga << endl;
+            }
+        }
+
+        remove("Transazioni.txt"); // Rimuove il file originale
+        rename("Transazioni_temp.txt", "Transazioni.txt"); // Rinomina il file temporaneo
+        fileTemp.close();
+        cout << "Transazione eliminata " << rigaDaEliminare << endl;
+        cout << "------- Listato dopo rimozione ------- "<<endl;
+        stampaTransazioni();
+
+    }
+
+
+    void stampaTransazioni(){
+        ifstream file("Transazioni.txt", std::ios::in);
+        string riga;
+        string cf_utente = u.getCf(); // Codice fiscale dell'utente attuale
+
+
+        while (getline(file, riga)) {
+            if (riga.find(cf_utente) != string::npos) { // Controlla se la riga contiene il CF dell'utente
+                cout << riga << endl;
+            }
+        }
+        file.close();
+    }
 
 
 

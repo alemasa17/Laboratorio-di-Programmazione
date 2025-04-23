@@ -20,7 +20,6 @@ add_executable(elaborato_Alessio_Masala main.cpp Data.h)
 
 # Eseguibile per i test
 add_executable(runTests
-        test/test-main.cpp
         test/test-utente.cpp
         test/test-transazione.cpp
         test/test-conto.cpp

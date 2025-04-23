@@ -45,6 +45,10 @@ int main() {
     c1.cercaTransData("4/3/2025");
 
 
+    c.eliminaTrans("1/3/2025", "spesa", "50");
+    c1.eliminaTrans("1/3/2025", "Carburatore", "450");
+
+
 
 
     return 0;
