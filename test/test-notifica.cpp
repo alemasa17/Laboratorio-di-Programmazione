@@ -21,6 +21,7 @@ public:
     }
 };
 
+// notifica si registra a conto
 TEST(NotificaTest, NotificaSiRegistraAConto) {
     Utente u("Marco", "Test", "TSTMRC01X00X000X");
     Conto conto(u);
@@ -40,6 +41,7 @@ TEST(NotificaTest, NotificaSiRegistraAConto) {
     delete notifica;
 }
 
+// notifica si rimuove alla distruzione
 TEST(NotificaTest, NotificaSiRimuoveAllaDistruzione) {
     Utente u("Laura", "Debug", "DBGLRA02Y00Y000Y");
     Conto conto(u);
@@ -58,6 +60,8 @@ TEST(NotificaTest, NotificaSiRimuoveAllaDistruzione) {
     EXPECT_TRUE(output.empty());
 }
 
+
+// notifica stampa ultima transazione
 TEST(NotificaTest, StampaUltimaTransazioneDaUpdate) {
     Utente u("Alessia", "Rossi", "RSSALS03Z00Z000Z");
     Conto conto(u);

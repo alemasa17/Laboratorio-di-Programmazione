@@ -10,6 +10,8 @@ public:
     }
 };
 
+
+// conto inizializzato con 0.0
 TEST(ContoTest, ContoSiInizializzaConSaldoZero) {
     Utente u("Mario", "Rossi", "RSSMRA00A01H501A");
     Conto conto(u);
@@ -17,6 +19,7 @@ TEST(ContoTest, ContoSiInizializzaConSaldoZero) {
     EXPECT_DOUBLE_EQ(conto.getSaldo(), 0.0);
 }
 
+// conto notifica observer
 TEST(ContoTest, AddTransazioneAggiornaSaldoENotificaObserver) {
     Utente u("Luca", "Verdi", "VRDLUC90B01F205Z");
     Conto conto(u);
@@ -31,6 +34,7 @@ TEST(ContoTest, AddTransazioneAggiornaSaldoENotificaObserver) {
     EXPECT_TRUE(obs.notified);
 }
 
+// saldo diminuisce con transazione negativa
 TEST(ContoTest, AggiuntaTransazioneUscitaRiduceSaldo) {
     Utente u("Giulia", "Bianchi", "BNCGLI95C41F205Y");
     Conto conto(u);
@@ -42,6 +46,7 @@ TEST(ContoTest, AggiuntaTransazioneUscitaRiduceSaldo) {
     EXPECT_DOUBLE_EQ(conto.getSaldo(), -50.0);
 }
 
+// test su ultima transazione
 TEST(ContoTest, StampaUltimaTransazioneNonCrasha) {
     Utente u("Andrea", "Neri", "NRIAND88D01F205X");
     Conto conto(u);

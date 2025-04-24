@@ -1,16 +1,19 @@
 #include <gtest/gtest.h>
 #include "../Transazione.h"
 
+// costruttore valido non lancia eccezioni
 TEST(TransazioneTest, CostruttoreValidoNonLanciaEccezioni) {
     Data d(1, 1, 2024);
     EXPECT_NO_THROW(Transazione t(d, "Affitto", 500.0, true));
 }
 
+// costruttore con importo negativo lancia eccezione
 TEST(TransazioneTest, CostruttoreConImportoNegativoLanciaEccezione) {
     Data d(1, 1, 2024);
     EXPECT_THROW(Transazione t(d, "Errore", -50.0, false), invalid_argument);
 }
 
+// test sui getters
 TEST(TransazioneTest, GettersRestituisconoValoriCorretti) {
     Data d(10, 5, 2023);
     Transazione t(d, "Stipendio", 1500.0, true);
@@ -21,6 +24,7 @@ TEST(TransazioneTest, GettersRestituisconoValoriCorretti) {
     EXPECT_TRUE(t.getInorOut());
 }
 
+// test su setData
 TEST(TransazioneTest, CambiandoLaDataNonCambiaLOriginale) {
     Data d1(1, 1, 2024);
     Transazione t(d1, "Acquisto", 100.0, false);
