@@ -24,7 +24,7 @@ add_executable(runTests
         test/test-transazione.cpp
         test/test-conto.cpp
         test/test-notifica.cpp
-        test/test-data.cpp)
+        test/test-data.cpp test/test-main.cpp)
 
 # Linka GoogleTest ai test
 target_link_libraries(runTests gtest gtest_main)
