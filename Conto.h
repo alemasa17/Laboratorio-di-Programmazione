@@ -121,7 +121,9 @@ public:
     }
 
     void eliminaTransazione(string data, string causale, double importo){
-        cout << endl << "Transazione da eliminare: " << causale << endl;
+        cout << endl << "Transazione da eliminare: " << causale << "| sul conto di ";
+        proprietarioConto();
+        cout<<endl;
         for(auto i = transazioni.begin();i != transazioni.end(); i++){
            if(i->getData() == data && i->getCausale() == causale && i->getImporto() == importo){
                 transazioni.erase(i);
@@ -139,6 +141,7 @@ public:
             cout << transazione << endl;
             }
         }
+
 
 
 private:

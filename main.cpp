@@ -48,7 +48,6 @@ int main() {
     c.cercaTransImporto(1000);
     c1.cercaTransImporto(450);
 
-
     c.eliminaTransazione("1/3/2025", "Stipendio", 1000);
     c1.eliminaTransazione("1/3/2025", "Carburatore", 450);
 
