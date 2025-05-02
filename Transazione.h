@@ -42,6 +42,17 @@ public:
         return inOrOut;
     }
 
+    string stampa(){
+        string transazione, inorout;
+        if(inOrOut){
+            inorout = "Entrata";
+        } else{
+            inorout = "Uscita";
+        }
+        transazione = data.prendiData() + " - " + inorout + " - " + to_string(importo) + " - " + causale;
+        return transazione;
+    }
+
 
 
 private:

@@ -58,3 +58,44 @@ TEST(ContoTest, StampaUltimaTransazioneNonCrasha) {
     // Non testiamo l'output, ma verifichiamo che la funzione non lanci eccezioni
     EXPECT_NO_THROW(conto.stampaUltimaTransazione());
 }
+
+// stampa tutte le transazioni (verifica che non crashi)
+TEST(ContoTest, StampaTransazioniNonCrasha) {
+    Utente u("Elena", "Russo", "RSSLEN99E41H501W");
+    Conto conto(u);
+
+    Data d(5, 5, 2025);
+    Transazione t1(d, "Versamento", 200.0, true);
+    Transazione t2(d, "Prelievo", 80.0, false);
+
+    conto.addTransazione(t1);
+    conto.addTransazione(t2);
+
+    EXPECT_NO_THROW(conto.stampaTransazioni());
+}
+
+// cerca per data - output non testabile direttamente, ma controlliamo che non lanci errori
+TEST(ContoTest, CercaTransazioniPerDataNonCrasha) {
+    Utente u("Fabio", "Conti", "CNTFBA88H12F205K");
+    Conto conto(u);
+
+    Data d1(1, 4, 2025);
+    Data d2(2, 4, 2025);
+
+    conto.addTransazione(Transazione(d1, "Entrata", 100.0, true));
+    conto.addTransazione(Transazione(d2, "Uscita", 30.0, false));
+
+    EXPECT_NO_THROW(conto.cercaTransData("2025-04-02"));
+}
+
+// cerca per importo - cerca valore preciso
+TEST(ContoTest, CercaTransazioniPerImportoNonCrasha) {
+    Utente u("Chiara", "Gallo", "GLLCHR90T41F205L");
+    Conto conto(u);
+
+    Data d(3, 3, 2025);
+    conto.addTransazione(Transazione(d, "Pagamento", 75.5, false));
+
+    EXPECT_NO_THROW(conto.cercaTransImporto(75.5));
+}
+

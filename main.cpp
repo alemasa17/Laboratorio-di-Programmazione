@@ -26,6 +26,7 @@ int main() {
     Transazione t2(d2, "Volo", 300, false);
     Transazione t3(d3, "Telefono", 500, false);
 
+
     Transazione tr(d, "TFR", 1000, true);
     Transazione tr1(d1,  "Carburatore", 450, false);
     Transazione tr2(d2, "Candele", 250, false);
@@ -44,11 +45,12 @@ int main() {
     c.cercaTransData("1/3/2025");
     c1.cercaTransData("4/3/2025");
 
+    c.cercaTransImporto(1000);
+    c1.cercaTransImporto(450);
 
-    c.eliminaTrans("1/3/2025", "spesa", "50");
-    c1.eliminaTrans("1/3/2025", "Carburatore", "450");
 
-
+    c.eliminaTransazione("1/3/2025", "Stipendio", 1000);
+    c1.eliminaTransazione("1/3/2025", "Carburatore", 450);
 
 
     return 0;
