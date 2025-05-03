@@ -22,7 +22,7 @@ public:
     }
 
     string getData() const {
-        return data.prendiData();
+        return data.toString();
     }
 
     void setData(const Data &data) {
@@ -42,14 +42,14 @@ public:
         return inOrOut;
     }
 
-    string stampa(){
+    string toString()const{
         string transazione, inorout;
         if(inOrOut){
             inorout = "Entrata";
         } else{
             inorout = "Uscita";
         }
-        transazione = data.prendiData() + " - " + inorout + " - " + to_string(importo) + " - " + causale;
+        transazione = data.toString() + " - " + inorout + " - " + to_string(importo) + " - " + causale;
         return transazione;
     }
 

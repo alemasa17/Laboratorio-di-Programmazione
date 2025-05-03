@@ -1,5 +1,7 @@
 #include <gtest/gtest.h>
 #include "../Conto.h"
+#include "../Transazione.h"
+
 
 // Mock Observer per testare il notify
 class MockObserver : public Observer {
@@ -59,43 +61,75 @@ TEST(ContoTest, StampaUltimaTransazioneNonCrasha) {
     EXPECT_NO_THROW(conto.stampaUltimaTransazione());
 }
 
-// stampa tutte le transazioni (verifica che non crashi)
-TEST(ContoTest, StampaTransazioniNonCrasha) {
-    Utente u("Elena", "Russo", "RSSLEN99E41H501W");
+
+TEST(ContoTest, CercaTransazioniPerDataRitornaCorretti) {
+    Utente u("Marco", "Blu", "BLUMRC90D01H501B");
     Conto conto(u);
 
-    Data d(5, 5, 2025);
-    Transazione t1(d, "Versamento", 200.0, true);
-    Transazione t2(d, "Prelievo", 80.0, false);
+    Data d1(10, 4, 2024);
+    Data d2(11, 4, 2024);
+
+    Transazione t1(d1, "Bonifico", 100.0, true);
+    Transazione t2(d1, "Pagamento", 50.0, false);
+    Transazione t3(d2, "Altro", 30.0, true);
 
     conto.addTransazione(t1);
     conto.addTransazione(t2);
+    conto.addTransazione(t3);
 
-    EXPECT_NO_THROW(conto.stampaTransazioni());
+    auto risultati = conto.cercaTransData(d1.toString());
+
+    ASSERT_EQ(risultati.size(), 2);
+    for (const auto& t : risultati) {
+        EXPECT_EQ(t.getData(), d1.toString());
+    }
 }
 
-// cerca per data - output non testabile direttamente, ma controlliamo che non lanci errori
-TEST(ContoTest, CercaTransazioniPerDataNonCrasha) {
-    Utente u("Fabio", "Conti", "CNTFBA88H12F205K");
+TEST(ContoTest, CercaTransazioniPerImportoRitornaCorretti) {
+    Utente u("Sofia", "Gialli", "GLLSFI80E01F205Z");
     Conto conto(u);
 
-    Data d1(1, 4, 2025);
-    Data d2(2, 4, 2025);
+    Data d(1, 3, 2024);
+    conto.addTransazione(Transazione(d, "Ricarica", 20.0, true));
+    conto.addTransazione(Transazione(d, "Spesa", 20.0, false));
+    conto.addTransazione(Transazione(d, "Altro", 15.0, true));
 
-    conto.addTransazione(Transazione(d1, "Entrata", 100.0, true));
-    conto.addTransazione(Transazione(d2, "Uscita", 30.0, false));
+    auto risultati = conto.cercaTransImporto(20.0);
 
-    EXPECT_NO_THROW(conto.cercaTransData("2025-04-02"));
+    ASSERT_EQ(risultati.size(), 2);
+    for (const auto& t : risultati) {
+        EXPECT_DOUBLE_EQ(t.getImporto(), 20.0);
+    }
 }
 
-// cerca per importo - cerca valore preciso
-TEST(ContoTest, CercaTransazioniPerImportoNonCrasha) {
-    Utente u("Chiara", "Gallo", "GLLCHR90T41F205L");
+TEST(ContoTest, EliminaTransazioneRiesceQuandoEsiste) {
+    Utente u("Luigi", "Neri", "NRILGU70A01F205K");
     Conto conto(u);
 
-    Data d(3, 3, 2025);
-    conto.addTransazione(Transazione(d, "Pagamento", 75.5, false));
+    Data d(15, 3, 2024);
+    Transazione t(d, "Affitto", 500.0, false);
+    conto.addTransazione(t);
 
-    EXPECT_NO_THROW(conto.cercaTransImporto(75.5));
+    // Verifica che venga trovata ed eliminata
+    bool risultato = conto.eliminaTransazione(d.toString(), "Affitto", 500.0);
+    EXPECT_TRUE(risultato);
+
+    // Verifica che non ci siano più transazioni
+    auto risultati = conto.cercaTransImporto(500.0);
+    EXPECT_TRUE(risultati.empty());
 }
+
+TEST(ContoTest, EliminaTransazioneFallisceQuandoNonEsiste) {
+    Utente u("Elena", "Viola", "VLEELN65B01H501M");
+    Conto conto(u);
+
+    Data d(20, 3, 2024);
+    conto.addTransazione(Transazione(d, "Spesa", 100.0, false));
+
+    // Prova a eliminare una transazione che non esiste
+    bool risultato = conto.eliminaTransazione(d.toString(), "Cinema", 50.0);
+    EXPECT_FALSE(risultato);
+}
+
+
 

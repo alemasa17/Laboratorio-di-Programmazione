@@ -44,5 +44,5 @@ TEST(TestData, AnnoNonValido) {
 // Test stampaData (controlliamo solo che non dia errori)
 TEST(TestData, StampaData) {
     Data d(10, 10, 2023);
-    EXPECT_NO_THROW(d.prendiData());
+    EXPECT_NO_THROW(d.toString());
 }

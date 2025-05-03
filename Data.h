@@ -27,7 +27,7 @@ public:
         }
     }
 
-    string prendiData() const {
+    string toString() const {
         string data = to_string(giorno) + "/" + to_string(mese) + "/" + to_string(anno);
         return data;
     }

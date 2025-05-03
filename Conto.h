@@ -94,53 +94,35 @@ public:
     }
 
 
-    void cercaTransData(const string &data){
-        string transazione;
-        cout << endl << "Transazioni in data: " << data << " sul conto di ";
-        proprietarioConto();
-        cout<<endl;
+    list<Transazione> cercaTransData(const string &data){
+        list<Transazione> tran;
         for(auto i = transazioni.begin();i != transazioni.end(); i++){
             if(i->getData() == data){
-                transazione =  i->stampa();
-                cout << transazione << endl;
+                tran.push_back(*i);
             }
         }
+        return tran;
     }
 
-    void cercaTransImporto(double importo){
-        string transazione;
-        cout << endl << "Transazioni con importo: " << importo << " sul conto di ";
-        proprietarioConto();
-        cout<<endl;
+    list<Transazione> cercaTransImporto(double importo){
+        list<Transazione> tran;
         for(auto i = transazioni.begin();i != transazioni.end(); i++){
             if(i->getImporto() == importo){
-                transazione =  i->stampa();
-                cout << transazione << endl;
+                tran.push_back(*i);
             }
         }
+        return tran;
     }
 
-    void eliminaTransazione(string data, string causale, double importo){
-        cout << endl << "Transazione da eliminare: " << causale << "| sul conto di ";
-        proprietarioConto();
-        cout<<endl;
+    bool eliminaTransazione(string data, string causale, double importo){
         for(auto i = transazioni.begin();i != transazioni.end(); i++){
            if(i->getData() == data && i->getCausale() == causale && i->getImporto() == importo){
                 transazioni.erase(i);
-                cout << "Transazione eliminata: " << causale <<"| transazioni rimanenti: "<< endl;
-                stampaTransazioni();
-                break;
+                return true;
            }
         }
+        return false;
     }
-
-    void stampaTransazioni(){
-        string transazione;
-        for(auto i = transazioni.begin();i != transazioni.end(); i++){
-            transazione =  i->stampa();
-            cout << transazione << endl;
-            }
-        }
 
 
 
