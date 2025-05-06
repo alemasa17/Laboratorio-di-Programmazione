@@ -34,3 +34,13 @@ TEST(TransazioneTest, CambiandoLaDataNonCambiaLOriginale) {
 
     EXPECT_EQ(t.getData(), "2/2/2024");
 }
+
+// test su toString
+TEST(TransazioneTest, ToStringRestituisceStringaCorretta) {
+    Data data(15, 4, 2024);
+    Transazione t(data, "Affitto", 750.50, false);  // false = Uscita
+
+    std::string atteso = "15/4/2024 - Uscita - 750.500000 - Affitto";
+
+    EXPECT_EQ(t.toString(), atteso);
+}
